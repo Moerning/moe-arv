@@ -21,7 +21,7 @@ label{
   @apply block text-[1.14285714286rem] capitalize mb-[8px];
 }
 .simple-label{
-  @apply text-charcoal-grey;
+  @apply text-charcoal-grey ml-2;
 }
 .error-label{
   @apply text-danger;
