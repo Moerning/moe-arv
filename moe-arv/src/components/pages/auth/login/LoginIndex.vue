@@ -1,6 +1,5 @@
 <template>
     <AuthFormBox>
-        <div class="font-bold">This is Login</div>
         <LoginForm />
     </AuthFormBox>
 </template>

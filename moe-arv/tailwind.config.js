@@ -17,6 +17,9 @@ export default {
       },
       gunmetal:{
         DEFAULT:"#55595c"
+      },
+      slate:{
+        grey:"#818a91"
       }
     }
   },

@@ -1,5 +1,5 @@
 <template>
-    <BasicInput v-model="name" name="username"/>
+    <BasicInput v-model="name" name="username" label="username"/>
 </template>
 <script setup lang="ts">
 import BasicInput from '@/components/common/input/BasicInput.vue';
