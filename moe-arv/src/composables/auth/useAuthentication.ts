@@ -1,13 +1,21 @@
 import { http } from "@/service/http";
-import { RegisterResponse } from "./auth.type";
+import { LoginResponse, RegisterResponse, UserAuthInfo } from "./auth.type";
+import { reactive } from "vue";
+import { TOKEN_STORAGE } from "@/utils/constants/constants";
 
-const TOKEN_STORAGE = "arv_token"
+const authState = reactive<{
+    user:UserAuthInfo | undefined
+}>({
+    user:undefined
+})
 
 export const useAuthentication = () => {
     
     const login = (email:string, password:string) => {
         const params = {"user":{ email, password }}
-        return http.post<any,any>('/users/login', params )
+        return http.post<any, {
+            data: LoginResponse
+        }>('/users/login', params )
     }
 
     const register = (email:string, password:string, username:string) => {
@@ -17,8 +25,10 @@ export const useAuthentication = () => {
         }>('/users', params )
     }
 
-    const setUserAuthentication = (token:string) => {
-        localStorage.setItem(TOKEN_STORAGE, token)
+    const setUserAuthentication = (info:UserAuthInfo) => {
+        if(info.token)
+            localStorage.setItem(TOKEN_STORAGE, info.token)
+        authState.user = { ...info }
     }
 
     const getUserAuthentication = () => localStorage.getItem(TOKEN_STORAGE)

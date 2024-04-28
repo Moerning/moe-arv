@@ -60,7 +60,7 @@ const { register, setUserAuthentication } = useAuthentication()
 const submit = handleSubmit(async () => {
   try {
     const { data } = await register(email.value, password.value, user.value)
-    setUserAuthentication(data.user.token)
+    setUserAuthentication(data.user)
     //moerning-x redirect to main page
   } catch (error) {
     let err = error as any

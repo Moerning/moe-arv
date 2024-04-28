@@ -18,7 +18,9 @@ import BasicInput from '@/components/common/input/BasicInput.vue';
 import { useForm, useField } from 'vee-validate';
 import { required } from '@/utils/validations/validations.util.ts';
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue';
-
+import { useAuthentication } from "@/composables/auth/useAuthentication";
+import { useToasMessage } from '@/composables/toast/useToastMessage';
+//state
 const validationSchema = {
   email: (value: string) => {
     const req = required(value, "Email")
@@ -36,10 +38,31 @@ const { errors, handleSubmit } = useForm({
   validationSchema
 })
 
-const submit = handleSubmit(() => { })
+const { value: email } = useField<string>('email')
+const { value: password } = useField<string>('password')
 
-const { value: email } = useField('email')
-const { value: password } = useField('password')
+const { login, setUserAuthentication } = useAuthentication()
+
+//actions
+const submit = handleSubmit(async () => {
+  try {
+    const { data } = await login(email.value, password.value)
+    setUserAuthentication(data.user)
+    //moerning-x redirect to main page
+  } catch (error) {
+    let err = error as any
+    let msg = '';
+    if(err && err.response && err.response?.data && err.response?.data.errors) {
+      let resp = err.response.data.errors as any
+      for (let index = 0; index < Object.keys(resp).length; index++) {
+        const element = Object.keys(resp)[index];
+        msg = `${element} ${resp[element]}`
+      }
+    }
+    const toast = useToasMessage()
+    toast.showErrorToast(msg, "Error")
+  }
+})
 </script>
 <style scoped>
 .dont-have-account{
