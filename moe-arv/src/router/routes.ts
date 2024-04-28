@@ -7,7 +7,7 @@ const routes = [
       {
         path:"login",
         name:"LoginView",
-        component: () => import("../components/pages/auth/LoginIndex.vue"),
+        component: () => import("../components/pages/auth/login/LoginIndex.vue"),
         meta:{
           pageTitle:"Login Page"
         }
