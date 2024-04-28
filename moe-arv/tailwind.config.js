@@ -20,6 +20,9 @@ export default {
       },
       slate:{
         grey:"#818a91"
+      },
+      danger:{
+        DEFAULT:"#d9534f"
       }
     }
   },
