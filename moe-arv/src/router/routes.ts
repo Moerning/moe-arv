@@ -22,6 +22,21 @@ const routes = [
       }
     ]
   },
+  {
+    path: `/articles`,
+    name: "ArticlesView",
+    component: () => import("../layouts/DashboardLayout.vue"),
+    children:[
+      {
+        path:"list",
+        name:"ArticlesListView",
+        component: () => import("../components/pages/articles/list/ArticleListIndex.vue"),
+        meta:{
+          pageTitle:"Articles"
+        }
+      },
+    ]
+  },
 ];
 
 export default routes;
