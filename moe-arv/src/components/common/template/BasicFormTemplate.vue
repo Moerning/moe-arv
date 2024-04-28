@@ -1,5 +1,5 @@
 <template>
-    <form @submit="() => onSubmit()">
+    <form @submit.prevent="() => onSubmit()">
         <div class="text-center mb-[27px]">
             <span class="form-title">{{ props.title }}</span>
         </div>

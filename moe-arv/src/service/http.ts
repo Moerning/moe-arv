@@ -21,7 +21,7 @@ const injectToken = (config: InternalAxiosRequestConfig): InternalAxiosRequestCo
   }
 };
 
-const BASE_URL = "http://base.url"
+const BASE_URL = "https://api.realworld.io/api"
 
 class Http {
   private instance: AxiosInstance | null = null;
