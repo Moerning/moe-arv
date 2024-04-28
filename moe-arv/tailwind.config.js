@@ -23,6 +23,12 @@ export default {
       },
       danger:{
         DEFAULT:"#d9534f"
+      },
+      water:{
+        blue:"#1c7cd5"
+      },
+      'warm-grey':{
+        DEFAULT:"#707070"
       }
     }
   },

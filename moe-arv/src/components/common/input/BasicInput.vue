@@ -18,8 +18,7 @@
 </template>
 <style scoped>
 label{
-  @apply block text-[1.14285714286rem] capitalize;
-  margin: 27px 86px 9px 8px;
+  @apply block text-[1.14285714286rem] capitalize mb-[8px];
 }
 .simple-label{
   @apply text-charcoal-grey;

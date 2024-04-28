@@ -7,14 +7,15 @@
             <div>
                 <BasicInput type="password" v-model="password" name="password" label="password" :error="errors?.password"/>
             </div>
+            <BasicButton variant="primary" block type="submit">Submit</BasicButton>
         </div>
-        <button type="submit">Submit</button>
     </form>
 </template>
 <script setup lang="ts">
 import BasicInput from '@/components/common/input/BasicInput.vue';
 import { useForm, useField } from 'vee-validate';
 import { required } from '@/utils/validations/validations.util.ts';
+import BasicButton from "@/components/common/input/BasicButton.vue";
 
 const validationSchema = {
   email: (value:string) => {
