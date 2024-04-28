@@ -11,7 +11,7 @@
 <template>
   <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
   </label>
-  <input v-model="model" :name="props.name" :class="{ 'simple-input': !props.error, 'error-input': props.error  }" />
+  <input v-model="model" :name="props.name" :class="{ 'simple-input': !props.error, 'error-input': props.error  }" :type="props.type" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
@@ -27,7 +27,7 @@ label{
   @apply text-danger;
 }
 input{
-    @apply w-[410px] h-[40px] rounded-[4px] bg-[#fff] mb-[10px];
+    @apply w-[410px] h-[40px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
 }
 .simple-input {
   @apply border border-[#ddd];

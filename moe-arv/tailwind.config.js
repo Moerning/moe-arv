@@ -22,13 +22,18 @@ export default {
         grey:"#818a91"
       },
       danger:{
-        DEFAULT:"#d9534f"
+        DEFAULT:"#d9534f",
+        text:"#9f4f48"
       },
       water:{
         blue:"#1c7cd5"
       },
       'warm-grey':{
         DEFAULT:"#707070"
+      },
+      'pinkish-grey':{
+        DEFAULT:"#e7cecd",
+        pale:"#efdfdf"
       }
     }
   },

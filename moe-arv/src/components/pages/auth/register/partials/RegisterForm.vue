@@ -21,7 +21,10 @@ import BasicInput from '@/components/common/input/BasicInput.vue';
 import { useForm, useField } from 'vee-validate';
 import { required } from '@/utils/validations/validations.util.ts';
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue';
-
+import { ref } from 'vue';
+import { useAuthentication } from "@/composables/auth/useAuthentication";
+import { useToasMessage } from '@/composables/toast/useToastMessage';
+//state
 const validationSchema = {
   email: (value: string) => {
     const req = required(value, "Email")
@@ -44,11 +47,26 @@ const { errors, handleSubmit } = useForm({
   validationSchema
 })
 
-const submit = handleSubmit(() => { })
+const { value: email } = useField<string>('email')
+const { value: password } = useField<string>('password')
+const { value: user } = useField<string>('user')
 
-const { value: email } = useField('email')
-const { value: password } = useField('password')
-const { value: user } = useField('user')
+const loading = ref(false)
+loading.value = false
+
+const { register } = useAuthentication()
+
+//actions
+const submit = handleSubmit(async () => {
+  // try {
+  //   await register(email.value, password.value, user.value)
+  // } catch (error) {
+    const toast = useToasMessage()
+    toast.showErrorToast("error")
+    console.log(register)
+  // }
+})
+
 </script>
 <style scoped>
 .dont-have-account{

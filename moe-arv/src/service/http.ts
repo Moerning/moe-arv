@@ -10,7 +10,7 @@ enum StatusCode {
 
 
 const injectToken = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  const token = "token";
+  const token = "";
   try {
     if (config && token && token != null && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
