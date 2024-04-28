@@ -20,6 +20,7 @@ import { required } from '@/utils/validations/validations.util.ts';
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue';
 import { useAuthentication } from "@/composables/auth/useAuthentication";
 import { useToasMessage } from '@/composables/toast/useToastMessage';
+import { useRouter } from 'vue-router';
 //state
 const validationSchema = {
   email: (value: string) => {
@@ -48,6 +49,10 @@ const submit = handleSubmit(async () => {
   try {
     const { data } = await login(email.value, password.value)
     setUserAuthentication(data.user)
+    const router = useRouter()
+    router.push({
+      name:"ArticlesListView"
+    })
     //moerning-x redirect to main page
   } catch (error) {
     let err = error as any
