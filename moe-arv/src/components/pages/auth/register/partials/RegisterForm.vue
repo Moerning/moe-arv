@@ -54,17 +54,27 @@ const { value: user } = useField<string>('user')
 const loading = ref(false)
 loading.value = false
 
-const { register } = useAuthentication()
+const { register, setUserAuthentication } = useAuthentication()
 
 //actions
 const submit = handleSubmit(async () => {
-  // try {
-  //   await register(email.value, password.value, user.value)
-  // } catch (error) {
+  try {
+    const { data } = await register(email.value, password.value, user.value)
+    setUserAuthentication(data.user.token)
+    //moerning-x redirect to main page
+  } catch (error) {
+    let err = error as any
+    let msg = '';
+    if(err && err.response && err.response?.data && err.response?.data.errors) {
+      let resp = err.response.data.errors as any
+      for (let index = 0; index < Object.keys(resp).length; index++) {
+        const element = Object.keys(resp)[index];
+        msg = `${element} ${resp[element]}`
+      }
+    }
     const toast = useToasMessage()
-    toast.showErrorToast("error")
-    console.log(register)
-  // }
+    toast.showErrorToast(msg, "Error")
+  }
 })
 
 </script>
