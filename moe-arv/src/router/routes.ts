@@ -11,6 +11,14 @@ const routes = [
         meta:{
           pageTitle:"Login Page"
         }
+      },
+      {
+        path:"register",
+        name:"RegisterView",
+        component: () => import("../components/pages/auth/register/RegisterIndex.vue"),
+        meta:{
+          pageTitle:"Register Page"
+        }
       }
     ]
   },
