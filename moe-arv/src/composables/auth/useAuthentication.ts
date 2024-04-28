@@ -1,6 +1,6 @@
 import { http } from "@/service/http";
 import { LoginResponse, RegisterResponse, UserAuthInfo } from "./auth.type";
-import { reactive } from "vue";
+import { reactive, toRefs } from "vue";
 import { TOKEN_STORAGE } from "@/utils/constants/constants";
 
 const authState = reactive<{
@@ -33,10 +33,23 @@ export const useAuthentication = () => {
 
     const getUserAuthentication = () => localStorage.getItem(TOKEN_STORAGE)
 
+    const getUser = async () => {
+        try {
+            const { data } = await http.get<any,{
+                data: LoginResponse
+            }>('/user')
+            authState.user = data.user
+        } catch (error) {
+            
+        }
+    }
+
     return {
         login,
         register,
         setUserAuthentication,
-        getUserAuthentication
+        getUserAuthentication,
+        getUser,
+        ...toRefs(authState)
     }
 }

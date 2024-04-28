@@ -43,13 +43,13 @@ const { value: email } = useField<string>('email')
 const { value: password } = useField<string>('password')
 
 const { login, setUserAuthentication } = useAuthentication()
+const router = useRouter()
 
 //actions
 const submit = handleSubmit(async () => {
   try {
     const { data } = await login(email.value, password.value)
     setUserAuthentication(data.user)
-    const router = useRouter()
     router.push({
       name:"ArticlesListView"
     })

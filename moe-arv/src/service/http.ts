@@ -1,4 +1,5 @@
 
+import { TOKEN_STORAGE } from "@/utils/constants/constants";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 enum StatusCode {
@@ -10,7 +11,7 @@ enum StatusCode {
 
 
 const injectToken = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  const token = "";
+  const token = localStorage.getItem(TOKEN_STORAGE);
   try {
     if (config && token && token != null && config.headers) {
       config.headers.Authorization = `Bearer ${token}`
