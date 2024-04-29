@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="() => onSubmit()">
-        <div class="text-center mb-[27px]">
+        <div class="text-center mb-[27px]" v-if="props.title">
             <span class="form-title">{{ props.title }}</span>
         </div>
         <div class="flex flex-col gap-5">
@@ -17,7 +17,7 @@ import BasicButton from '../input/BasicButton.vue';
 
 const props = defineProps<{
     onSubmit: Function,
-    title:string
+    title?:string
 }>()
 </script>
 <style>

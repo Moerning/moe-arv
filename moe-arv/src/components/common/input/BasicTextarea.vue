@@ -1,21 +1,21 @@
 <script setup lang="ts">
-    interface InputProps {
+    interface AreaProps {
       name:string,
       label:string,
-      type?:"text" | "password",
-      error?:string | undefined
+      error?:string | undefined,
+      rows?: number
     }
 
-    const model = defineModel()
-    const props = withDefaults(defineProps<InputProps>(), {
-      type: "text"
+    const model = defineModel<string>()
+    const props = withDefaults(defineProps<AreaProps>(), {
+      rows:10
     })
 </script>
 
 <template>
   <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
   </label>
-  <input v-model="model" :name="props.name" :class="{ 'simple-input': !props.error, 'error-input': props.error  }" :type="props.type" />
+  <textarea v-model="model" :name="props.name" :class="{ 'simple-area': !props.error, 'error-area': props.error  }" :rows="props.rows" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
@@ -30,13 +30,13 @@ label{
 .error-label{
   @apply text-danger;
 }
-input{
+textarea{
     @apply w-[410px] h-[40px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
 }
-.simple-input {
+.simple-area {
   @apply border border-[#ddd];
 }
-.error-input {
+.error-area {
   @apply border border-danger;
 }
 .error-msg {
