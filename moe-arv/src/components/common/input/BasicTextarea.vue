@@ -31,7 +31,7 @@ label{
   @apply text-danger;
 }
 textarea{
-    @apply w-[410px] h-[40px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
+    @apply w-[410px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
 }
 .simple-area {
   @apply border border-[#ddd];
