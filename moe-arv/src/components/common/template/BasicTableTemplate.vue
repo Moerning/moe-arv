@@ -1,5 +1,5 @@
 <template>
-    <table>
+    <table :class="tableClass">
         <thead>
             <tr>
                 <th v-for="h in props.headers" :class="[getAlign(h), headerStyle(h)]">
@@ -21,14 +21,19 @@
 </template>
 <script setup lang="ts">
 import { TableHeader } from '@/components/types/types.type';
-import { useSlots } from 'vue';
+import { computed, useSlots } from 'vue';
 
 
 const slots = useSlots()
 const props = defineProps<{
     headers:TableHeader[],
-    values:any[]
+    values:any[],
+    block?: boolean
 }>()
+
+const tableClass = computed(()=>{
+    return props.block ? "w-full" : ''
+})
 
 const getAlign = (header:TableHeader) => {
     switch (header.align) {

@@ -2,7 +2,7 @@
     <div>
         articles table
     </div>
-    <BasicTableTemplate :headers="headers" :values="currentList" v-if="currentList">
+    <BasicTableTemplate block :headers="headers" :values="currentList" v-if="currentList">
         <template #author="{ row }">
             {{ getAuthor(row) }}
         </template>
