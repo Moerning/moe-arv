@@ -1,14 +1,16 @@
 <template>
     <BasicFormTemplate :on-submit="submit">
-        <div>
-            <BasicInput v-model="title" name="title" label="title" :error="errors.title"/>
-        </div>
-        <div>
-            <BasicInput v-model="description" name="description" label="description" :error="errors.description"/>
-        </div>
-        <div>
-            <BasicTextarea v-model="body" name="body" label="body" :error="errors.body"/>
-        </div>
+        <template #body>
+            <div>
+                <BasicInput v-model="title" name="title" label="title" :error="errors.title"/>
+            </div>
+            <div>
+                <BasicInput v-model="description" name="description" label="description" :error="errors.description"/>
+            </div>
+            <div>
+                <BasicTextarea v-model="body" name="body" label="body" :error="errors.body"/>
+            </div>
+        </template>
     </BasicFormTemplate>
 </template>
 <script setup lang="ts">

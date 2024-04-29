@@ -35,6 +35,14 @@ const routes = [
           pageTitle:"Articles"
         }
       },
+      {
+        path:"create",
+        name:"CreateArticle",
+        component: () => import("../components/pages/articles/form/CreateArticleIndex.vue"),
+        meta:{
+          pageTitle:"Add Article"
+        }
+      },
     ]
   },
 ];
