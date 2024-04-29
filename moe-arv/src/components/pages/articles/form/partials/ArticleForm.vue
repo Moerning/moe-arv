@@ -2,10 +2,10 @@
     <BasicFormTemplate :on-submit="submit">
         <template #body>
             <div>
-                <BasicInput v-model="title" name="title" label="title" :error="errors.title"/>
+                <BasicInput block v-model="title" name="title" label="title" :error="errors.title"/>
             </div>
             <div>
-                <BasicInput v-model="description" name="description" label="description" :error="errors.description"/>
+                <BasicInput block v-model="description" name="description" label="description" :error="errors.description"/>
             </div>
             <div>
                 <BasicTextarea v-model="body" name="body" label="body" :error="errors.body"/>

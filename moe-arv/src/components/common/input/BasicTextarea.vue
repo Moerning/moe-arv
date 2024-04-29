@@ -1,21 +1,32 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
     interface AreaProps {
       name:string,
       label:string,
       error?:string | undefined,
-      rows?: number
+      rows?: number,
+      block?:boolean
     }
 
     const model = defineModel<string>()
     const props = withDefaults(defineProps<AreaProps>(), {
       rows:10
     })
+    const size = computed(()=>{
+      switch (props.block) {
+        case true:
+          return "block w-full"
+        default:
+          return "w-[410px]"
+      }
+    })
 </script>
 
 <template>
   <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
   </label>
-  <textarea v-model="model" :name="props.name" :class="{ 'simple-area': !props.error, 'error-area': props.error  }" :rows="props.rows" />
+  <textarea v-model="model" :name="props.name" :class="[{ 'simple-area': !props.error, 'error-area': props.error  }, size]" :rows="props.rows" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
@@ -31,7 +42,7 @@ label{
   @apply text-danger;
 }
 textarea{
-    @apply w-[410px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
+    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2;
 }
 .simple-area {
   @apply border border-[#ddd];
@@ -40,8 +51,8 @@ textarea{
   @apply border border-danger;
 }
 .error-msg {
-  @apply text-danger;
-  margin: 10px 34px 28px 0;
+  @apply text-danger block;
+  margin: 0px 34px 2px 0;
 }
 input:focus {
   @apply border border-white outline-slate-grey;

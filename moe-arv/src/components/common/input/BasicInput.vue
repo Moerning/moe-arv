@@ -1,21 +1,33 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
     interface InputProps {
       name:string,
       label:string,
       type?:"text" | "password",
-      error?:string | undefined
+      error?:string | undefined,
+      block?:boolean
     }
 
     const model = defineModel()
     const props = withDefaults(defineProps<InputProps>(), {
       type: "text"
     })
+
+    const size = computed(()=>{
+      switch (props.block) {
+        case true:
+          return "block w-full h-[40px]"
+        default:
+          return "w-[410px] h-[40px]"
+      }
+    })
 </script>
 
 <template>
   <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
   </label>
-  <input v-model="model" :name="props.name" :class="{ 'simple-input': !props.error, 'error-input': props.error  }" :type="props.type" />
+  <input v-model="model" :name="props.name" :class="[{ 'simple-input': !props.error, 'error-input': props.error  }, size]" :type="props.type" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
@@ -31,7 +43,7 @@ label{
   @apply text-danger;
 }
 input{
-    @apply w-[410px] h-[40px] rounded-[4px] bg-[#fff] mb-[10px] px-2;
+    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2;
 }
 .simple-input {
   @apply border border-[#ddd];
