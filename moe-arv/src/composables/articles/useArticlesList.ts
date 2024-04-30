@@ -19,8 +19,18 @@ export const useArticlesList = () => {
         })
     }
 
+    const fetchAllTags = () => {
+        return http.get<any,{
+            data:{
+                tags:string[],
+            },
+            status:number
+        }>('/tags')
+    }
+
     return {
         fetchByAuthorList,
+        fetchAllTags,
         fetchList
     }
 }
