@@ -45,7 +45,7 @@ label{
   @apply text-danger;
 }
 input{
-    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2 mt-[8px];
+    @apply rounded-[4px] bg-[#fff] mb-[10px] px-3 mt-[8px];
 }
 .simple-input {
   @apply border border-[#ddd];

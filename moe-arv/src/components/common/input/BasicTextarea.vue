@@ -25,24 +25,24 @@ import { computed } from 'vue';
 
 <template>
   <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
+    <textarea v-model="model" :name="props.name" :class="[{ 'simple-area': !props.error, 'error-area': props.error  }, size]" :rows="props.rows" />
   </label>
-  <textarea v-model="model" :name="props.name" :class="[{ 'simple-area': !props.error, 'error-area': props.error  }, size]" :rows="props.rows" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
 </template>
 <style scoped>
 label{
-  @apply block text-[1.14285714286rem] capitalize mb-[8px];
+  @apply block text-[1.14285714286rem] capitalize;
 }
 .simple-label{
-  @apply text-charcoal-grey ml-2;
+  @apply text-charcoal-grey;
 }
 .error-label{
   @apply text-danger;
 }
 textarea{
-    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2;
+    @apply rounded-[4px] bg-[#fff] mb-[10px] px-3 mt-[8px];
 }
 .simple-area {
   @apply border border-[#ddd];
