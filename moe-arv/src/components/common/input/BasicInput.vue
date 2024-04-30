@@ -26,26 +26,26 @@ import { computed } from 'vue';
 </script>
 
 <template>
-  <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }" :for="props.name">{{ props.label }}
+  <label :class="{ 'simple-label': !props.error, 'error-label': props.error  }">{{ props.label }}
+    <input :placeholder="props.placeholder" v-model="model" :name="props.name" 
+    :class="[{ 'simple-input': !props.error, 'error-input': props.error  }, size]" :type="props.type" />
   </label>
-  <input :placeholder="props.placeholder" v-model="model" :name="props.name" 
-  :class="[{ 'simple-input': !props.error, 'error-input': props.error  }, size]" :type="props.type" />
   <span class="error-msg" v-if="props.error">
     {{ props.error }}
   </span>
 </template>
 <style scoped>
 label{
-  @apply block text-[1.14285714286rem] capitalize mb-[8px];
+  @apply block text-[1.14285714286rem] capitalize;
 }
 .simple-label{
-  @apply text-charcoal-grey ml-2;
+  @apply text-charcoal-grey;
 }
 .error-label{
   @apply text-danger;
 }
 input{
-    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2;
+    @apply rounded-[4px] bg-[#fff] mb-[10px] px-2 mt-[8px];
 }
 .simple-input {
   @apply border border-[#ddd];
