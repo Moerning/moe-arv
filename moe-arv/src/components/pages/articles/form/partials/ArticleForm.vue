@@ -15,7 +15,13 @@
                 </div>
                 <div class="flex flex-col gap-5">
                     <div>
-                        <BasicInput placeholder="New Tag" block v-model="newTag" name="tag" label="Tags" />
+                        <BasicInput placeholder="New Tag" block v-model="newTag" name="tag" label="Tags">
+                            <template #control="{ value }">
+                                <button class="add-tag-btn" v-if="value" @click="addTag">
+                                    Add
+                                </button>
+                            </template>
+                        </BasicInput>
                     </div>
                     <div class="tags">
                         <div v-for="t in tags">
@@ -63,7 +69,7 @@ const { value: title } = useField<string>('title')
 const { value: description } = useField<string>('description')
 const { value: body } = useField<string>('body')
 const newTag = ref()
-const tags = ref<string[]>()
+const tags = ref<string[]>([])
 
 const selectedTags = reactive<{ [key:string]: boolean }>({})
 
@@ -71,6 +77,12 @@ const { fetchAllTags } = useArticlesList()
 
 
 //action
+const addTag = () => {
+    tags.value = [...tags.value, newTag.value]
+    selectedTags[newTag.value] = true
+    newTag.value = ""
+}
+
 const submit = handleSubmit(() => { })
 const getAllTags = async () => {
     try {
@@ -84,8 +96,11 @@ const getAllTags = async () => {
 getAllTags()
 
 </script>
-<style>
+<style scoped>
 .tags{
     @apply rounded border border-[#dddddd] p-5
+}
+.add-tag-btn{
+    @apply bg-water-blue text-white text-center p-1 h-full px-2 inline-block py-2;
 }
 </style>
