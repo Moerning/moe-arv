@@ -1,5 +1,5 @@
 <template>
-    <div class="default-side-menu">
+    <div class="default-side-menu" :class="{ 'displayed-menu': displayMenu, 'hidden-menu': !displayMenu }">
         <nav>
             <ul v-for="m in menu">
                 <span class="list-title">{{ m.title }}</span>
@@ -13,11 +13,16 @@
             </ul>
         </nav>
     </div>
+    <div class="backdrop" :class="{ 'hidden': !displayMenu }">
+
+    </div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { useLayout } from '@/composables/layout/useLayout';
 
+const { displayMenu } = useLayout()
 const route = useRoute()
 const currentRoute = computed(()=>{
     return route.name
@@ -51,7 +56,20 @@ const getClass = (child:ArvMenuItem) => {
 </script>
 <style scoped>
 .default-side-menu {
-    @apply h-full bg-water-blue text-white w-[250px];
+    @apply h-full bg-water-blue text-white w-[250px] absolute lg:static;
+}
+
+.displayed-menu{
+    @apply -left-0 z-[2];
+}
+
+.hidden-menu{
+    @apply -left-full;
+}
+
+.backdrop{
+    @apply z-[1] absolute w-full h-full top-0 left-0;
+    background-color: rgba(0, 0, 0, .25)
 }
 
 ul{

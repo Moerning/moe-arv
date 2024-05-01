@@ -9,11 +9,17 @@
                     Welcome {{ user?.username }}
                 </span>
             </div>
+            <div>
+                <button @click="toggleMenu" class="hm-btn">show menu</button>
+            </div>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
 import { useAuthentication } from "@/composables/auth/useAuthentication";
+import { useLayout } from "@/composables/layout/useLayout";
+
+const { toggleMenu } = useLayout()
 
 const { user, getUser } = useAuthentication()
 getUser()
@@ -31,5 +37,8 @@ getUser()
     font-style: normal;
     letter-spacing: normal;
     text-align: left;
+}
+.hm-btn{
+    @apply lg:hidden bg-transparent text-white;
 }
 </style>
