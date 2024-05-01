@@ -10,7 +10,7 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-    variant: "primary",
+    variant?: "primary",
     block?: boolean,
     loading?: boolean,
     disabled?: boolean
@@ -35,7 +35,7 @@ const display = computed(() => {
     if (props.block) {
         return "block w-full"
     }
-    return "inline-block"
+    return "inline-block min-w-[120px]"
 })
 
 </script>

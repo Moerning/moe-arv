@@ -1,5 +1,5 @@
 <template>
-    <BasicFormTemplate :loading="loading" :on-submit="submit">
+    <BasicFormTemplate :on-submit="submit">
         <template #body>
             <div class="grid grid-cols-5 gap-8">
                 <div class="flex flex-col gap-5 col-span-5 lg:col-span-4">
@@ -31,6 +31,9 @@
                 </div>
             </div>
         </template>
+        <template #bottom>
+            <BasicButton :loading="props.loading" :block="false">Submit</BasicButton>
+        </template>
     </BasicFormTemplate>
 </template>
 <script setup lang="ts">
@@ -43,6 +46,7 @@ import { useArticlesList } from "@/composables/articles/useArticlesList";
 import { reactive, ref } from "vue";
 import BasicCheckbox from "@/components/common/input/BasicCheckbox.vue";
 import { Article, PostArticleParams } from "@/composables/articles/articles.type";
+import BasicButton from "@/components/common/input/BasicButton.vue";
 //state
 const props = defineProps<{
     onSubmit:Function,
@@ -94,9 +98,11 @@ if(props.editable){
 }
 
 const addTag = () => {
-    tags.value = [...tags.value, newTag.value]
-    selectedTags[newTag.value] = true
-    newTag.value = ""
+    if(!tags.value.includes(newTag.value)){
+        tags.value = [...tags.value, newTag.value]
+        selectedTags[newTag.value] = true
+        newTag.value = ""
+    }
 }
 
 const submit = handleSubmit(() => props.onSubmit( prepareParams() ))
