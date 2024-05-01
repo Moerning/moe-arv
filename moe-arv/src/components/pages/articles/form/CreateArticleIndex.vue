@@ -6,4 +6,5 @@
 <script setup lang="ts">
 import ArticleForm from './partials/ArticleForm.vue';
 import BasicContainerTemplate from '@/components/common/template/BasicContainerTemplate.vue';
+import { useArticle } from '@/composables/articles/useArticle';
 </script>
