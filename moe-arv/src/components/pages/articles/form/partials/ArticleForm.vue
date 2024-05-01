@@ -42,11 +42,12 @@ import BasicTextarea from "@/components/common/input/BasicTextarea.vue";
 import { useArticlesList } from "@/composables/articles/useArticlesList";
 import { reactive, ref } from "vue";
 import BasicCheckbox from "@/components/common/input/BasicCheckbox.vue";
-import { PostArticleParams } from "@/composables/articles/articles.type";
+import { Article, PostArticleParams } from "@/composables/articles/articles.type";
 //state
 const props = defineProps<{
     onSubmit:Function,
-    loading:boolean | undefined
+    loading:boolean | undefined,
+    editable?:Article
 }>()
 const validationSchema = {
     title: (value: string) => {
@@ -81,6 +82,17 @@ const selectedTags = reactive<{ [key:string]: boolean }>({})
 const { fetchAllTags } = useArticlesList()
 
 //action
+if(props.editable){
+    title.value = props.editable.title
+    description.value = props.editable.description
+    body.value = props.editable.body
+    if(props.editable.tagList && props.editable.tagList.length){
+        props.editable.tagList.forEach((t)=>{
+            selectedTags[t] = true
+        })
+    }
+}
+
 const addTag = () => {
     tags.value = [...tags.value, newTag.value]
     selectedTags[newTag.value] = true

@@ -19,6 +19,8 @@ const doCreateArticle = async (params:PostArticleParams) => {
         await createArticle(params)
     } catch (error) {
         
+    } finally {
+        loading.value = false
     }
 }
 

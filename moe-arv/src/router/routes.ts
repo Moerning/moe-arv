@@ -43,6 +43,14 @@ const routes = [
           pageTitle:"Add Article"
         }
       },
+      {
+        path:"edit/:slug",
+        name:"EditArticle",
+        component: () => import("../components/pages/articles/form/EditArticleIndex.vue"),
+        meta:{
+          pageTitle:"Edit Article"
+        }
+      },
     ]
   },
 ];
