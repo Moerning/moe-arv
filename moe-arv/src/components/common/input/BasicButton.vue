@@ -1,18 +1,28 @@
 <template>
-    <button class="basic-btn" :class="[style,display]">
+    <button :disabled="props.loading || props.disabled" class="basic-btn" :class="[style, display]" @click="onClick">
+        <div class="loader-container">
+            <div class="loader" v-if="props.loading"></div>
+        </div>
         <slot />
     </button>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue';
 
-
 const props = defineProps<{
-    variant:"primary",
-    block?: boolean
+    variant: "primary",
+    block?: boolean,
+    loading?: boolean,
+    disabled?: boolean
 }>()
 
-const style = computed(()=>{
+const onClick = (e: Event) => {
+    if (props.loading) {
+        e.preventDefault()
+    }
+}
+
+const style = computed(() => {
     switch (props.variant) {
         case "primary":
             return "bg-water-blue text-white"
@@ -21,16 +31,47 @@ const style = computed(()=>{
     }
 })
 
-const display = computed(()=>{
-    if(props.block){
+const display = computed(() => {
+    if (props.block) {
         return "block w-full"
     }
     return "inline-block"
 })
 
 </script>
-<style>
-.basic-btn{
-    @apply text-center py-[11px] rounded-[4px];
+<style scoped>
+.basic-btn {
+    @apply text-center py-[11px] rounded-[4px] relative;
+}
+button:disabled{
+    @apply text-[#c7c7c7];
+}
+.loader-container{
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    left: 5%;
+}
+.loader {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 </style>

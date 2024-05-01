@@ -1,5 +1,5 @@
 <template>
-    <BasicFormTemplate :on-submit="submit">
+    <BasicFormTemplate :loading="loading" :on-submit="submit">
         <template #body>
             <div class="grid grid-cols-5 gap-8">
                 <div class="flex flex-col gap-5 col-span-5 lg:col-span-4">

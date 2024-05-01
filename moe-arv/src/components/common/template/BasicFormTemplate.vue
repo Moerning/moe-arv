@@ -6,7 +6,7 @@
         <div class="flex flex-col gap-5">
             <slot name="body" />
             <div>
-                <BasicButton variant="primary" block type="submit">Submit</BasicButton>
+                <BasicButton :loading="props.loading" variant="primary" block type="submit">Submit</BasicButton>
                 <slot name="bottom"></slot>
             </div>
         </div>
@@ -17,7 +17,8 @@ import BasicButton from '../input/BasicButton.vue';
 
 const props = defineProps<{
     onSubmit: Function,
-    title?:string
+    title?:string,
+    loading?: boolean
 }>()
 </script>
 <style>
