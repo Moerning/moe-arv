@@ -42,7 +42,12 @@ import BasicTextarea from "@/components/common/input/BasicTextarea.vue";
 import { useArticlesList } from "@/composables/articles/useArticlesList";
 import { reactive, ref } from "vue";
 import BasicCheckbox from "@/components/common/input/BasicCheckbox.vue";
+import { PostArticleParams } from "@/composables/articles/articles.type";
 //state
+const props = defineProps<{
+    onSubmit:Function,
+    loading:boolean | undefined
+}>()
 const validationSchema = {
     title: (value: string) => {
         const req = required(value, "Title")
@@ -75,7 +80,6 @@ const selectedTags = reactive<{ [key:string]: boolean }>({})
 
 const { fetchAllTags } = useArticlesList()
 
-
 //action
 const addTag = () => {
     tags.value = [...tags.value, newTag.value]
@@ -83,7 +87,7 @@ const addTag = () => {
     newTag.value = ""
 }
 
-const submit = handleSubmit(() => { })
+const submit = handleSubmit(() => props.onSubmit( prepareParams() ))
 const getAllTags = async () => {
     try {
         const { data } = await fetchAllTags()
@@ -92,6 +96,19 @@ const getAllTags = async () => {
         
     }
 }
+
+const prepareParams = () : PostArticleParams => {
+    const params: PostArticleParams = {
+        article:{
+            title : title.value,
+            description : description.value,
+            body : body.value,
+            tagList: tags.value
+        }
+    }
+
+    return params
+} 
 
 getAllTags()
 
