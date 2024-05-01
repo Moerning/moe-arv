@@ -2,7 +2,7 @@
     <BasicFormTemplate :on-submit="submit">
         <template #body>
             <div class="grid grid-cols-5 gap-8">
-                <div class="flex flex-col gap-5 col-span-4">
+                <div class="flex flex-col gap-5 col-span-5 lg:col-span-4">
                     <div>
                         <BasicInput block v-model="title" name="title" label="title" :error="errors.title"/>
                     </div>
@@ -13,7 +13,7 @@
                         <BasicTextarea block v-model="body" name="body" label="body" :error="errors.body"/>
                     </div>
                 </div>
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5 col-span-5 lg:col-span-1">
                     <div>
                         <BasicInput placeholder="New Tag" block v-model="newTag" name="tag" label="Tags">
                             <template #control="{ value }">
