@@ -12,7 +12,7 @@
       </div>
     </template>
     <template #footer>
-      <p class="dont-have-account">Already have an account? <span>Login Here</span></p>
+      <p class="dont-have-account">Already have an account?<router-link :to="{ name:'LoginView' }"> <span>Login Here</span></router-link></p>
     </template>
   </BasicFormTemplate>
 </template>

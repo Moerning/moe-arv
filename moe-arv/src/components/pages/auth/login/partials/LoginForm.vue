@@ -9,7 +9,7 @@
       </div>
     </template>
     <template #footer>
-      <p class="dont-have-account">Don't have an account? <span>Register Now</span></p>
+      <p class="dont-have-account">Don't have an account? <router-link :to="{ name:'RegisterView' }"><span>Register Now</span></router-link></p>
     </template>
   </BasicFormTemplate>
 </template>
