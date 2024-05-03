@@ -1,11 +1,12 @@
-import { reactive, toRefs } from "vue"
+import { reactive, toRefs } from 'vue'
 
 const layoutState = reactive({
-    displayMenu:false
+    displayMenu: false
 })
 
 export const useLayout = () => {
-    const toggleMenu = () => layoutState.displayMenu = !layoutState.displayMenu
+    const toggleMenu = () =>
+        (layoutState.displayMenu = !layoutState.displayMenu)
 
     return {
         toggleMenu,

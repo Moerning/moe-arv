@@ -1,5 +1,10 @@
 <template>
-    <button :disabled="props.loading || props.disabled" class="basic-btn" :class="[style, display]" @click="onClick">
+    <button
+        :disabled="props.loading || props.disabled"
+        class="basic-btn"
+        :class="[style, display]"
+        @click="onClick"
+    >
         <div class="loader-container">
             <div class="loader" v-if="props.loading"></div>
         </div>
@@ -7,14 +12,14 @@
     </button>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps<{
-    theme?: "primary" | "danger" | "white" | "sky" | "outline",
-    block?: boolean,
-    loading?: boolean,
-    disabled?: boolean,
-    size?:"md" | "icon"
+    theme?: 'primary' | 'danger' | 'white' | 'sky' | 'outline'
+    block?: boolean
+    loading?: boolean
+    disabled?: boolean
+    size?: 'md' | 'icon'
 }>()
 
 const onClick = (e: Event) => {
@@ -25,41 +30,40 @@ const onClick = (e: Event) => {
 
 const style = computed(() => {
     switch (props.theme) {
-        case "primary":
-            return "bg-water-blue text-white"
-        case "danger":
-            return "bg-pale-red text-white"
-        case "white":
-            return "bg-white border text-gunpowder"
-        case "outline":
-            return "bg-transparent border text-white"
-        case "sky":
-            return "bg-transparent border border-dark-sky-blue text-dark-sky-blue"
+        case 'primary':
+            return 'bg-water-blue text-white'
+        case 'danger':
+            return 'bg-pale-red text-white'
+        case 'white':
+            return 'bg-white border text-gunpowder'
+        case 'outline':
+            return 'bg-transparent border text-white'
+        case 'sky':
+            return 'bg-transparent border border-dark-sky-blue text-dark-sky-blue'
         default:
-            return "bg-water-blue text-white"
+            return 'bg-water-blue text-white'
     }
 })
 
 const display = computed(() => {
     if (props.block) {
-        return "block w-full"
-    } else if(props.size == 'md'){
-        return "inline-block w-[87px] h-[40px]"
-    } else if( props.size == 'icon' ) {
-        return "h-[24px] w-[24px] inline-flex items-center justify-center text-sm"
+        return 'block w-full'
+    } else if (props.size == 'md') {
+        return 'inline-block w-[87px] h-[40px]'
+    } else if (props.size == 'icon') {
+        return 'h-[24px] w-[24px] inline-flex items-center justify-center text-sm'
     }
-    return "inline-block min-w-[120px]"
+    return 'inline-block min-w-[120px]'
 })
-
 </script>
 <style scoped>
 .basic-btn {
     @apply text-center py-[11px] rounded-[4px] relative;
 }
-button:disabled{
+button:disabled {
     @apply text-[#c7c7c7];
 }
-.loader-container{
+.loader-container {
     position: absolute;
     top: 55%;
     transform: translateY(-50%);
@@ -69,7 +73,7 @@ button:disabled{
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 2px solid rgba(255, 255, 255, .3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     border-top-color: #fff;
     animation: spin 1s ease-in-out infinite;
@@ -87,6 +91,4 @@ button:disabled{
         -webkit-transform: rotate(360deg);
     }
 }
-
-
 </style>

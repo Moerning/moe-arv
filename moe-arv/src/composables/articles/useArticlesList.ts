@@ -1,31 +1,37 @@
-import { http } from "@/service/http";
-import { Article } from "./articles.type";
+import { http } from '@/service/http'
+import { Article } from './articles.type'
 export const useArticlesList = () => {
     const fetchList = () => {
-        return http.get<any,{
-            data:{
-                articles:Article[],
-                articlesCount: number
-            },
-            status:number
-        }>('/articles')
+        return http.get<
+            any,
+            {
+                data: {
+                    articles: Article[]
+                    articlesCount: number
+                }
+                status: number
+            }
+        >('/articles')
     }
 
-    const fetchByAuthorList = (author:string) => {
+    const fetchByAuthorList = (author: string) => {
         return http.get('/articles', {
-            params:{
+            params: {
                 author
             }
         })
     }
 
     const fetchAllTags = () => {
-        return http.get<any,{
-            data:{
-                tags:string[],
-            },
-            status:number
-        }>('/tags')
+        return http.get<
+            any,
+            {
+                data: {
+                    tags: string[]
+                }
+                status: number
+            }
+        >('/tags')
     }
 
     return {

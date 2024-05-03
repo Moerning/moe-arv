@@ -1,16 +1,16 @@
 export type LoginResponse = {
-    "user": UserAuthInfo
+    user: UserAuthInfo
 }
 
 export type RegisterResponse = {
-    "user": UserAuthInfo
+    user: UserAuthInfo
 }
 
 export type UserAuthInfo = {
-    "id": number,
-    "email": string,
-    "username": string,
-    "bio": null,
-    "image": string,
-    "token": string
+    id: number
+    email: string
+    username: string
+    bio: null
+    image: string
+    token: string
 }

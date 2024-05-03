@@ -3,7 +3,10 @@
         <thead>
             <tr>
                 <th class="px-2">#</th>
-                <th v-for="h in props.headers" :class="[getAlign(h), headerStyle(h)]">
+                <th
+                    v-for="h in props.headers"
+                    :class="[getAlign(h), headerStyle(h)]"
+                >
                     {{ h.title }}
                 </th>
             </tr>
@@ -37,22 +40,21 @@
     </div>
 </template>
 <script setup lang="ts">
-import { TableHeader } from '@/components/types/types.type';
-import { computed, useSlots } from 'vue';
-
+import { TableHeader } from '@/components/types/types.type'
+import { computed, useSlots } from 'vue'
 
 const slots = useSlots()
 const props = defineProps<{
-    headers:TableHeader[],
-    values:any[],
+    headers: TableHeader[]
+    values: any[]
     block?: boolean
 }>()
 
-const tableClass = computed(()=>{
-    return props.block ? "w-full" : ''
+const tableClass = computed(() => {
+    return props.block ? 'w-full' : ''
 })
 
-const getAlign = (header:TableHeader) => {
+const getAlign = (header: TableHeader) => {
     switch (header.align) {
         case 'center':
             return 'text-center'
@@ -61,22 +63,22 @@ const getAlign = (header:TableHeader) => {
         case 'right':
             return 'text-right'
         default:
-            break;
+            break
     }
 }
 
-const headerStyle = (header:TableHeader) => {
-    if(header.class)
-        return header.class
-    return "default-th"
+const headerStyle = (header: TableHeader) => {
+    if (header.class) return header.class
+    return 'default-th'
 }
 </script>
 <style>
-.default-th{
+.default-th {
     @apply text-[16px] leading-[1.5] font-bold text-gunmetal pt-[10px] pb-[11px] capitalize px-2;
     font-stretch: normal;
     font-style: normal;
 }
+
 thead tr {
     @apply bg-silver;
 }
@@ -88,12 +90,15 @@ tbody tr td {
 tbody tr {
     @apply border-b border-black;
 }
-.mobile-table{
+
+.mobile-table {
     @apply lg:hidden;
 }
-.mobile-row{
+
+.mobile-row {
     @apply border-b;
 }
+
 .mobile-col {
     @apply flex items-center justify-between my-3;
 }

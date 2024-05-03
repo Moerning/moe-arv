@@ -3,105 +3,105 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-size: 14px;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 14px;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
 }
 
 /* toast */
 .Vue-Toastification__toast--default.default-toast-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to the toast body when using regular strings as content */
 .Vue-Toastification__toast-body.default-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to a wrapper div when using a custom component as content */
 .Vue-Toastification__toast-component-body.default-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
-.Vue-Toastification__toast-component-body{
+.Vue-Toastification__toast-component-body {
 }
 
 .Vue-Toastification__toast--default.error-toast-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to the toast body when using regular strings as content */
 .Vue-Toastification__toast-body.error-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to a wrapper div when using a custom component as content */
 .Vue-Toastification__toast-component-body.error-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
-.error-toast-class .Vue-Toastification__progress-bar{
-  @apply bg-danger;
+.error-toast-class .Vue-Toastification__progress-bar {
+    @apply bg-danger;
 }
 
 .Vue-Toastification__toast--default.success-toast-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to the toast body when using regular strings as content */
 .Vue-Toastification__toast-body.success-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
 /* Applied to a wrapper div when using a custom component as content */
 .Vue-Toastification__toast-component-body.success-toast-body-class {
-  background-color: white;
+    background-color: white;
 }
 
-.info-toast-class .Vue-Toastification__progress-bar{
-  @apply bg-water-blue;
+.info-toast-class .Vue-Toastification__progress-bar {
+    @apply bg-water-blue;
 }
 
-.default-toast-class .Vue-Toastification__progress-bar{
-  @apply bg-water-blue;
+.default-toast-class .Vue-Toastification__progress-bar {
+    @apply bg-water-blue;
 }
 
-.success-toast-class .Vue-Toastification__progress-bar{
-  @apply bg-blue-100;
+.success-toast-class .Vue-Toastification__progress-bar {
+    @apply bg-blue-100;
 }
 
-.Vue-Toastification__toast.error-toast-class{
-  padding: 0;
+.Vue-Toastification__toast.error-toast-class {
+    padding: 0;
 }
 
-.Vue-Toastification__toast.success-toast-class{
-  padding: 0;
+.Vue-Toastification__toast.success-toast-class {
+    padding: 0;
 }
-.Vue-Toastification__close-button{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5px;
+.Vue-Toastification__close-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
 }
