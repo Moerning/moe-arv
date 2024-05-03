@@ -10,7 +10,7 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-    variant?: "primary",
+    theme?: "primary" | "danger" | "white",
     block?: boolean,
     loading?: boolean,
     disabled?: boolean
@@ -23,9 +23,13 @@ const onClick = (e: Event) => {
 }
 
 const style = computed(() => {
-    switch (props.variant) {
+    switch (props.theme) {
         case "primary":
             return "bg-water-blue text-white"
+        case "danger":
+            return "bg-pale-red text-white"
+        case "white":
+            return "bg-white border text-gunpowder"
         default:
             return "bg-water-blue text-white"
     }

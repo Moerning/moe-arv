@@ -116,12 +116,18 @@ const getAllTags = async () => {
 }
 
 const prepareParams = () : PostArticleParams => {
+    let tagsSelected:string[] = []
+    Object.keys(selectedTags).forEach((t)=>{
+        if(selectedTags[t]){
+            tagsSelected.push(t)
+        }
+    })
     const params: PostArticleParams = {
         article:{
             title : title.value,
             description : description.value,
             body : body.value,
-            tagList: tags.value
+            tagList: tagsSelected
         }
     }
 

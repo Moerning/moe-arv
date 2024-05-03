@@ -38,6 +38,13 @@ export default {
       'dark-sky':{
         blue:"#56c0e0",
         soft:"#8ac8db"
+      },
+      pale:{
+        red:"#d9534f"
+      },
+      success:{
+        DEFAULT:"#5cb85c",
+        pale:"#e2eed8"
       }
     }
   },

@@ -1,6 +1,8 @@
 import { reactive, toRefs } from "vue";
 import { useToast } from "vue-toastification";
 import BasicError from "@/components/common/toast/BasicError.vue";
+import BasicSuccess from "@/components/common/toast/BasicSuccess.vue";
+
 const toast = useToast()
 
 const toastState = reactive({
@@ -17,16 +19,22 @@ export const useToasMessage = () => {
     const showErrorToast = (message:string, title= "An Error Has Occured") => {
         setMessage(title, message)
         toast(BasicError, {
-                // For the actual toast, including different toast types:
                 toastClassName: "error-toast-class",
-            
-                // For the toast body when using strings or a custom component as content
                 bodyClassName: ["error-toast-body-class"]
+        });
+    }
+
+    const showSuccessToast = (message:string, title= "Operation Successful!") => {
+        setMessage(title, message)
+        toast(BasicSuccess, {
+                toastClassName: "success-toast-class",
+                bodyClassName: ["success-toast-body-class"]
         });
     }
 
     return {
         showErrorToast,
+        showSuccessToast,
         ...toRefs(toastState)
     }
 }

@@ -10,6 +10,10 @@ export const useArticle = () => {
         return http.put(`/articles/${slug}`, params)
     }
 
+    const deleteArticle = (slug:string) => {
+        return http.delete(`/articles/${slug}`)
+    }
+
     const fetchArticleBySlug = (slug:string) => {
         return http.get<any,{
             data:{
@@ -21,6 +25,7 @@ export const useArticle = () => {
     return {
         createArticle,
         updateArticle,
+        deleteArticle,
         fetchArticleBySlug
     }
 }

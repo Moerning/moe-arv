@@ -95,6 +95,10 @@
 .Vue-Toastification__toast.error-toast-class{
   padding: 0;
 }
+
+.Vue-Toastification__toast.success-toast-class{
+  padding: 0;
+}
 .Vue-Toastification__close-button{
   position: absolute;
   top: 50%;

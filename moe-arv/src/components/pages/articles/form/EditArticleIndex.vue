@@ -9,10 +9,12 @@ import BasicContainerTemplate from '@/components/common/template/BasicContainerT
 import { Article, PostArticleParams } from '@/composables/articles/articles.type';
 import { useArticle } from '@/composables/articles/useArticle';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import { useToasMessage } from '@/composables/toast/useToastMessage';
 
+const { showSuccessToast } = useToasMessage()
 const route = useRoute()
-
+const router = useRouter()
 const loading = ref()
 const { fetchArticleBySlug, updateArticle } = useArticle()
 
@@ -34,6 +36,8 @@ const doUpdateArticle = async (params:PostArticleParams) => {
     loading.value = true
     try {
         await updateArticle(route.params.slug as string, params)
+        router.push({ name:"ArticlesListView" })
+        showSuccessToast("Article updated!")
     } catch (error) {
         
     } finally {
