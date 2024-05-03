@@ -2,13 +2,15 @@
     <table :class="tableClass">
         <thead>
             <tr>
+                <th class="px-2">#</th>
                 <th v-for="h in props.headers" :class="[getAlign(h), headerStyle(h)]">
                     {{ h.title }}
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="v in props.values">
+            <tr v-for="(v, i) in props.values">
+                <td class="px-8">{{ i }}</td>
                 <td v-for="h in props.headers" :class="[getAlign(h)]">
                     <template v-if="!slots[h.key]">
                         {{ v[h.key] }}
@@ -56,7 +58,7 @@ const headerStyle = (header:TableHeader) => {
 </script>
 <style>
 .default-th{
-    @apply text-[16px] leading-[1.5] font-bold text-gunmetal pt-[10px] pb-[11px] capitalize;
+    @apply text-[16px] leading-[1.5] font-bold text-gunmetal pt-[10px] pb-[11px] capitalize px-2;
     font-stretch: normal;
     font-style: normal;
 }
@@ -71,4 +73,5 @@ tbody tr td {
 tbody tr {
     @apply border-b border-black;
 }
+
 </style>
