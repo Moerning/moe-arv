@@ -44,7 +44,7 @@ const menu : ArvMenuItem[] = [
             },
             {
                 title:"New Article",
-                to: { name: "RegisterView" }
+                to: { name: "CreateArticle" }
             },
         ]
     }
