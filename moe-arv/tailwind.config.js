@@ -34,6 +34,10 @@ export default {
       'pinkish-grey':{
         DEFAULT:"#e7cecd",
         pale:"#efdfdf"
+      },
+      'dark-sky':{
+        blue:"#56c0e0",
+        soft:"#8ac8db"
       }
     }
   },

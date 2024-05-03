@@ -16,10 +16,17 @@
                 </span> -->
                 <span>
                     <Menu >
-                        <MenuButton>...</MenuButton>
+                        <MenuButton>
+                            <div class="controls">
+                                <button class="w-[36px]">...</button>
+                                <button class="w-[31px]">
+                                    <material-icon name="arrow_drop_down" />
+                                </button>
+                            </div>
+                        </MenuButton>
                         <MenuItems as="section">
                             <div class="relative">
-                                <div class="absolute right-0 bg-white p-3">
+                                <div class="article-controls">
                                     <MenuItem>
                                         <button class="default-menu-btn">Edit</button>
                                     </MenuItem>
@@ -79,7 +86,20 @@ getList()
 </script>
 <style>
 .default-menu-btn{
+    @apply bg-white hover:bg-silver;
     width: 175px;
     height: 43px;
+}
+.controls {
+    @apply h-[40px] bg-dark-sky-blue rounded-md p-0 overflow-hidden;
+}
+.controls button{
+    @apply bg-transparent text-white hover:bg-dark-sky-soft h-full pt-1;
+}
+.controls:nth-child(1){
+    @apply flex items-center;
+}
+.article-controls{
+    @apply absolute right-0 bg-white flex flex-col divide-y border rounded overflow-hidden;
 }
 </style>

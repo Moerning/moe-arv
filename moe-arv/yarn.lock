@@ -12,6 +12,11 @@
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.24.4.tgz"
   integrity sha512-zTvEBcghmeBma9QIGunWevvBAp4/Qu9Bdq+2k0Ot4fVMD6v3dsC9WOcRSKk7tRRyBM/53yKMJko9xOatGQAwSg==
 
+"@dbetka/vue-material-icons@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dbetka/vue-material-icons/-/vue-material-icons-1.0.4.tgz#5ec4b2fe1a7f79ed53dcc37b5558f623b80355b8"
+  integrity sha512-/GVuAHgiAd1ZOigHOFrMuNI4bl+njKztnYGjeFINZowFMOyRS0qO6B9z94prSjN6JlV1P2VCu9J2Fg8Fz2CIrg==
+
 "@esbuild/aix-ppc64@0.20.2":
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.20.2.tgz#a70f4ac11c6a1dfc18b8bbb13284155d933b9537"
