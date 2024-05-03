@@ -1,7 +1,4 @@
 <template>
-    <div>
-        articles table
-    </div>
     <BasicTableTemplate block :headers="headers" :values="currentList" v-if="currentList">
         <template #author="{ row }">
             {{ getAuthor(row) }}
