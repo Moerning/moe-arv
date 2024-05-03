@@ -10,6 +10,6 @@
 </script>
 <style>
 .default-tag{
-    @apply p-[2px] inline-block bg-water-blue text-white capitalize text-sm;
+    @apply py-[2px] inline-block bg-water-blue text-white capitalize text-sm rounded px-2;
 }
 </style>

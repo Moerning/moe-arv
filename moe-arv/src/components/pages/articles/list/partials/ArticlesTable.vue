@@ -7,7 +7,9 @@
             {{ getExerpt(row) }}
         </template>
         <template #tags="{ row }">
-            <DefaultTag v-for="t in row.tags" :title="t" />
+            <div class="w-[110px] flex flex-wrap gap-1">
+                <DefaultTag v-for="t in row.tagList" :title="t" />
+            </div>
         </template>
         <template #created="{  }">
             <div class="flex items-center">
@@ -77,7 +79,7 @@ const getExerpt = (art: Article) => {
 const headers: TableHeader[] = [
     { title: "title", key: "title", align: 'left' },
     { title: "author", key: "author", align: 'left' },
-    { title: "tags", key: "tags", align: 'right' },
+    { title: "tags", key: "tags", align: 'left' },
     { title: "excerpt", key: "excerpt", align: 'center' },
     { title: "created", key: "created", align: 'left' },
 ]
