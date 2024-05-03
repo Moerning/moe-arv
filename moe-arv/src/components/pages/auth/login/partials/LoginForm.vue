@@ -1,5 +1,5 @@
 <template>
-  <BasicFormTemplate :on-submit="submit" title="LOGIN">
+  <BasicFormTemplate :loading="loading" :on-submit="submit" title="LOGIN">
     <template #body>
       <div>
         <BasicInput type="text" v-model="email" name="email" label="email" :error="errors?.email" />
@@ -58,7 +58,7 @@ const submit = handleSubmit(async () => {
   } catch (error) {
     
   } finally {
-    loading.value = true
+    loading.value = false
   }
 })
 </script>

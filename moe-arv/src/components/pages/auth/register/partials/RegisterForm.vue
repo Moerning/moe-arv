@@ -1,5 +1,5 @@
 <template>
-  <BasicFormTemplate :on-submit="submit" title="Register">
+  <BasicFormTemplate :loading="loading" :on-submit="submit" title="Register">
     <template #body>
       <div>
         <BasicInput type="text" v-model="user" name="user" label="user" :error="errors?.user" />
@@ -51,18 +51,20 @@ const { value: password } = useField<string>('password')
 const { value: user } = useField<string>('user')
 
 const loading = ref(false)
-loading.value = false
 
 const { register, setUserAuthentication } = useAuthentication()
 
 //actions
 const submit = handleSubmit(async () => {
+  loading.value = true
   try {
     const { data } = await register(email.value, password.value, user.value)
     setUserAuthentication(data.user)
     //moerning-x redirect to main page
   } catch (error) {
 
+  } finally {
+    loading.value = false
   }
 })
 
