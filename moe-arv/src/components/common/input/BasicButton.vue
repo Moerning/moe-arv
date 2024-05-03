@@ -10,11 +10,11 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-    theme?: "primary" | "danger" | "white" | "sky",
+    theme?: "primary" | "danger" | "white" | "sky" | "outline",
     block?: boolean,
     loading?: boolean,
     disabled?: boolean,
-    size?:"md"
+    size?:"md" | "icon"
 }>()
 
 const onClick = (e: Event) => {
@@ -31,6 +31,8 @@ const style = computed(() => {
             return "bg-pale-red text-white"
         case "white":
             return "bg-white border text-gunpowder"
+        case "outline":
+            return "bg-transparent border text-white"
         case "sky":
             return "bg-transparent border border-dark-sky-blue text-dark-sky-blue"
         default:
@@ -43,6 +45,8 @@ const display = computed(() => {
         return "block w-full"
     } else if(props.size == 'md'){
         return "inline-block w-[87px] h-[40px]"
+    } else if( props.size == 'icon' ) {
+        return "h-[24px] w-[24px] inline-flex items-center justify-center text-sm"
     }
     return "inline-block min-w-[120px]"
 })
@@ -83,4 +87,6 @@ button:disabled{
         -webkit-transform: rotate(360deg);
     }
 }
+
+
 </style>
