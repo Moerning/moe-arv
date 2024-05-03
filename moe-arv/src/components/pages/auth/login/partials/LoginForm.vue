@@ -8,7 +8,7 @@
         <BasicInput type="password" v-model="password" name="password" label="password" :error="errors?.password" />
       </div>
     </template>
-    <template #bottom>
+    <template #footer>
       <p class="dont-have-account">Don't have an account? <span>Register Now</span></p>
     </template>
   </BasicFormTemplate>
@@ -19,9 +19,10 @@ import { useForm, useField } from 'vee-validate';
 import { required } from '@/utils/validations/validations.util.ts';
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue';
 import { useAuthentication } from "@/composables/auth/useAuthentication";
-import { useToasMessage } from '@/composables/toast/useToastMessage';
 import { useRouter } from 'vue-router';
+import { ref } from 'vue';
 //state
+const loading = ref()
 const validationSchema = {
   email: (value: string) => {
     const req = required(value, "Email")
@@ -47,25 +48,17 @@ const router = useRouter()
 
 //actions
 const submit = handleSubmit(async () => {
+  loading.value = true
   try {
     const { data } = await login(email.value, password.value)
     setUserAuthentication(data.user)
     router.push({
       name:"ArticlesListView"
     })
-    //moerning-x redirect to main page
   } catch (error) {
-    let err = error as any
-    let msg = '';
-    if(err && err.response && err.response?.data && err.response?.data.errors) {
-      let resp = err.response.data.errors as any
-      for (let index = 0; index < Object.keys(resp).length; index++) {
-        const element = Object.keys(resp)[index];
-        msg = `${element} ${resp[element]}`
-      }
-    }
-    const toast = useToasMessage()
-    toast.showErrorToast(msg, "Error")
+    
+  } finally {
+    loading.value = true
   }
 })
 </script>

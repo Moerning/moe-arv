@@ -9,7 +9,8 @@ const routes = [
         name:"LoginView",
         component: () => import("../components/pages/auth/login/LoginIndex.vue"),
         meta:{
-          pageTitle:"Login Page"
+          pageTitle:"Login Page",
+          noAuth:true
         }
       },
       {
@@ -17,7 +18,8 @@ const routes = [
         name:"RegisterView",
         component: () => import("../components/pages/auth/register/RegisterIndex.vue"),
         meta:{
-          pageTitle:"Register Page"
+          pageTitle:"Register Page",
+          noAuth:true
         }
       }
     ]

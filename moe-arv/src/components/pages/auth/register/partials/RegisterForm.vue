@@ -11,7 +11,7 @@
         <BasicInput type="password" v-model="password" name="password" label="password" :error="errors?.password" />
       </div>
     </template>
-    <template #bottom>
+    <template #footer>
       <p class="dont-have-account">Already have an account? <span>Login Here</span></p>
     </template>
   </BasicFormTemplate>
@@ -23,7 +23,6 @@ import { required } from '@/utils/validations/validations.util.ts';
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue';
 import { ref } from 'vue';
 import { useAuthentication } from "@/composables/auth/useAuthentication";
-import { useToasMessage } from '@/composables/toast/useToastMessage';
 //state
 const validationSchema = {
   email: (value: string) => {
@@ -63,17 +62,7 @@ const submit = handleSubmit(async () => {
     setUserAuthentication(data.user)
     //moerning-x redirect to main page
   } catch (error) {
-    let err = error as any
-    let msg = '';
-    if(err && err.response && err.response?.data && err.response?.data.errors) {
-      let resp = err.response.data.errors as any
-      for (let index = 0; index < Object.keys(resp).length; index++) {
-        const element = Object.keys(resp)[index];
-        msg = `${element} ${resp[element]}`
-      }
-    }
-    const toast = useToasMessage()
-    toast.showErrorToast(msg, "Error")
+
   }
 })
 

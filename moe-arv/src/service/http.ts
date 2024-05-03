@@ -1,4 +1,5 @@
 
+import { useToasMessage } from "@/composables/toast/useToastMessage";
 import { TOKEN_STORAGE } from "@/utils/constants/constants";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
@@ -120,6 +121,19 @@ class Http {
     else if(error.response && error.response.status){
       status = error.response.status
     }
+
+    let err = error as any
+    let msg = '';
+    if(err && err.response && err.response?.data && err.response?.data.errors) {
+      let resp = err.response.data.errors as any
+      for (let index = 0; index < Object.keys(resp).length; index++) {
+        const element = Object.keys(resp)[index];
+        msg = `${element} ${resp[element]}`
+      }
+    }
+    const toast = useToasMessage()
+    toast.showErrorToast(msg, "Error")
+
     switch (status) {
       case StatusCode.InternalServerError: {
         // Handle InternalServerError

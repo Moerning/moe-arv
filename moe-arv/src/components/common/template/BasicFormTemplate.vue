@@ -8,6 +8,7 @@
             <div>
                 <BasicButton v-if="!slots['bottom']" :loading="props.loading" variant="primary" block type="submit">Submit</BasicButton>
                 <slot name="bottom"></slot>
+                <slot name="footer"></slot>
             </div>
         </div>
     </form>
