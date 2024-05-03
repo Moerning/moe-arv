@@ -44,12 +44,18 @@ export const useAuthentication = () => {
         }
     }
 
+    const forget = () => {
+        localStorage.setItem(TOKEN_STORAGE, '')
+        authState.user = undefined
+    }
+
     return {
         login,
         register,
         setUserAuthentication,
         getUserAuthentication,
         getUser,
+        forget,
         ...toRefs(authState)
     }
 }

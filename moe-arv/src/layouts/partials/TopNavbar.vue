@@ -10,6 +10,9 @@
                 </span>
             </div>
             <div>
+                <BasicButton @click="logout" size="md" theme="sky" >
+                    Logout
+                </BasicButton>
                 <button @click="toggleMenu" class="hm-btn">show menu</button>
             </div>
         </div>
@@ -18,10 +21,19 @@
 <script lang="ts" setup>
 import { useAuthentication } from "@/composables/auth/useAuthentication";
 import { useLayout } from "@/composables/layout/useLayout";
+import BasicButton from "@/components/common/input/BasicButton.vue";
+import { useRouter } from "vue-router";
+
 
 const { toggleMenu } = useLayout()
+const router = useRouter()
+const { user, getUser,forget } = useAuthentication()
 
-const { user, getUser } = useAuthentication()
+const logout = () => {
+    forget()
+    router.push({ name: "LoginView" })
+}
+
 getUser()
 </script>
 <style>

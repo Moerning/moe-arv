@@ -10,10 +10,11 @@
 import { computed } from 'vue';
 
 const props = defineProps<{
-    theme?: "primary" | "danger" | "white",
+    theme?: "primary" | "danger" | "white" | "sky",
     block?: boolean,
     loading?: boolean,
-    disabled?: boolean
+    disabled?: boolean,
+    size?:"md"
 }>()
 
 const onClick = (e: Event) => {
@@ -30,6 +31,8 @@ const style = computed(() => {
             return "bg-pale-red text-white"
         case "white":
             return "bg-white border text-gunpowder"
+        case "sky":
+            return "bg-transparent border border-dark-sky-blue text-dark-sky-blue"
         default:
             return "bg-water-blue text-white"
     }
@@ -38,6 +41,8 @@ const style = computed(() => {
 const display = computed(() => {
     if (props.block) {
         return "block w-full"
+    } else if(props.size == 'md'){
+        return "inline-block w-[87px] h-[40px]"
     }
     return "inline-block min-w-[120px]"
 })
