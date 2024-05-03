@@ -1,5 +1,5 @@
 <template>
-    <table :class="tableClass">
+    <table :class="tableClass" class="hidden lg:table">
         <thead>
             <tr>
                 <th class="px-2">#</th>
@@ -20,6 +20,21 @@
             </tr>
         </tbody>
     </table>
+    <div class="mobile-table">
+        <div v-for="row in props.values" class="mobile-row">
+            <div class="mobile-col" v-for="header in props.headers">
+                <span class="font-[600]">
+                    {{ header.title }}
+                </span>
+                <span class="max-w-[200px] truncate">
+                    <template v-if="!slots[header.key]">
+                        {{ row[header.key] }}
+                    </template>
+                    <slot :name="header.key" :row="row" />
+                </span>
+            </div>
+        </div>
+    </div>
 </template>
 <script setup lang="ts">
 import { TableHeader } from '@/components/types/types.type';
@@ -73,5 +88,13 @@ tbody tr td {
 tbody tr {
     @apply border-b border-black;
 }
-
+.mobile-table{
+    @apply lg:hidden;
+}
+.mobile-row{
+    @apply border-b;
+}
+.mobile-col {
+    @apply flex items-center justify-between my-3;
+}
 </style>
