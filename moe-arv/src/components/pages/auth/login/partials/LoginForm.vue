@@ -24,7 +24,7 @@
             <p class="dont-have-account">
                 Don't have an account?
                 <router-link :to="{ name: 'RegisterView' }"
-                    ><span>Register Now</span></router-link
+                    ><span class="mx-2">Register Now</span></router-link
                 >
             </p>
         </template>

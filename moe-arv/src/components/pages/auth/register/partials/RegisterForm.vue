@@ -34,7 +34,7 @@
                 Already have an account?<router-link
                     :to="{ name: 'LoginView' }"
                 >
-                    <span>Login Here</span></router-link
+                    <span class="mx-2">Login Here</span></router-link
                 >
             </p>
         </template>
