@@ -67,7 +67,11 @@ const routes = [
                 }
             }
         ]
-    }
+    },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: () =>
+        import(
+            '../components/pages/404.vue'
+        ) },
 ]
 
 export default routes
