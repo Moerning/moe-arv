@@ -47,7 +47,9 @@ import { required } from '@/utils/validations/validations.util.ts'
 import BasicFormTemplate from '@/components/common/template/BasicFormTemplate.vue'
 import { ref } from 'vue'
 import { useAuthentication } from '@/composables/auth/useAuthentication'
+import { useRouter } from 'vue-router';
 //state
+const router = useRouter()
 const validationSchema = {
     email: (value: string) => {
         const req = required(value, 'Email')
@@ -84,6 +86,9 @@ const submit = handleSubmit(async () => {
     try {
         const { data } = await register(email.value, password.value, user.value)
         setUserAuthentication(data.user)
+        router.push({
+            name: 'ArticlesListView'
+        })
         //moerning-x redirect to main page
     } catch (error) {
     } finally {
